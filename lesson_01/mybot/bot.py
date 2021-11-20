@@ -2,7 +2,8 @@ import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import settings
 import platform
-import Adafruit_DHT
+if platform.node() == 'raspberrypi':
+    import Adafruit_DHT
 
 logging.basicConfig(filename='bot.log', level=logging.INFO)
 
