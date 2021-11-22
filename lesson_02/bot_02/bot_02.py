@@ -41,6 +41,8 @@ def get_planet (update, context):
         # но судя по статье https://digitology.tech/docs/python_3/c-api/intro.html
         # это к разработчикам ephem
         update.message.reply_text("Планета {} находится в созвезии {}".format(parameter, ephem.constellation(planet)[1]))
+    else:
+        update.message.reply_text("Я так и не понял, что вы от меня хотите :-(")
 
 def talk_to_me(update, context):
     user_text = update.message.text
