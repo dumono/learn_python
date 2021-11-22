@@ -9,9 +9,11 @@ logging.basicConfig(filename='bot.log', level=logging.INFO)
 
 def greet_user(update, context):
     print('Вызван /start')
-    update.message.reply_text("Привет, пользователь! Ты вызвал команду /start")
+    update.message.reply_text("Привет, {}! Ты вызвал команду /start".format(update.message.from_user["username"]))
     update.message.reply_text("ты можешь со мной поболтать, либо узнать данные с датчика")
     update.message.reply_text("для этого используй команду /temp")
+    logging.info("connect username: {}".format(update.message.from_user["username"]))
+    print("connect username: {}".format(update.message.from_user["username"]))
 
 def talk_to_me(update, context):
     user_text = update.message.text
@@ -28,7 +30,7 @@ def get_temperature(update, context):
             #print('Температура={0:0.1f}* Влажность={1:0.1f}%'.format(temperature,humidity))
             update.message.reply_text('Температура={0:0.1f}* Влажность={1:0.1f}%'.format(temperature,humidity))
         else:
-            logging.error("Ошибка получения данных с датчика DHT" + settings.DHT_TYPE + " на пине GPIO" + settings.DHT_PIN)
+            logging.error('Ошибка получения данных с датчика DHT{0} на пине GPIO{1}'.format(settings.DHT_TYPE, settings.DHT_PIN))
             update.message.reply_text("Ошибка получения данных с датчика DHT" + settings.DHT_TYPE)
 
 
