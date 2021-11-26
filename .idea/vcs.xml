@@ -10,6 +10,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/learn-homework-1" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/test/learn_python_koans" vcs="Git" />
   </component>
 </project>

@@ -16,12 +16,22 @@ def is_int_negative_number(number):
         return True
     return False
 
-def my_func(x,y):
-    result = x
-    for i in range(1,abs(y)):
-        result *= x
+def is_even_number(number):
+    if number % 2 == 0:
+        return True
+    return False
 
-    return 1 / result
+def number_power(number, power):
+    if power == 1:
+        return number
+    if not is_even_number(power):
+        return number_power(number, power/2) * number * number_power(number, power/2)
+    else:
+        return number_power(number, power/2) * number_power(number, power/2)
+
+def my_func(x,y):
+
+    return 1 / number_power(x, abs(y))
 
 def main():
     x = float(input ("Введите число, которое будете возводить в степень: "))
