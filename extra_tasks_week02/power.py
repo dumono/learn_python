@@ -21,29 +21,31 @@ def is_even_number(number):
         return True
     return False
 
-def number_power(number, power):
+def my_func(number,power):
+    if power < 0:
+        return 1 / my_func(number, abs(power))
     if power == 1:
         return number
+    if power == 2:
+        return number * number
     if not is_even_number(power):
-        return number_power(number, power/2) * number * number_power(number, power/2)
-    else:
-        return number_power(number, power/2) * number_power(number, power/2)
+        a = my_func(number, (power-1)/2)
+        return a * number * a
+    a = my_func(number, power/2)
+    return a * a
 
-def my_func(x,y):
-
-    return 1 / number_power(x, abs(y))
 
 def main():
-    x = float(input ("Введите число, которое будете возводить в степень: "))
-    y = int(input ("Введите степень числа: "))
+    x = float(input("Введите число, которое будете возводить в степень: "))
+    y = int(input("Введите степень числа: "))
     if not is_real_positive_number(x):
-        print ("Параметр {0} не удовлетворяет условиям".format(x))
+        print("Параметр {0} не удовлетворяет условиям".format(x))
         exit(-1)
     if not is_int_negative_number(y):
-        print ("Параметр {0} не удовлетворяет условиям".format(y))
+        print("Параметр {0} не удовлетворяет условиям".format(y))
         exit(-1)
 
-    print ("Результат:", my_func(x,y))
+    print("Результат:", my_func(x, y))
 
 if __name__ == "__main__":
     main()
